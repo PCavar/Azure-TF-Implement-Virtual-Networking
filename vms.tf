@@ -23,7 +23,7 @@ resource "azurerm_network_interface" "vm_nics" {
   }
 }
 
-## Creation om VMs
+## Creation of VMs
 resource "azurerm_windows_virtual_machine" "vms" {
   for_each            = var.azure_virtual_machines
   name                = each.value.name
