@@ -88,3 +88,17 @@ variable "azure_network_security_group" {
   description = "Name of the NSG provisioned"
   default     = "az104-04-nsg01"
 }
+
+## Name of your domain
+variable "dns_name_zone_private" {
+  type        = string
+  description = "Name of the Private DNS Provisioned"
+  default     = "contoso.org"
+}
+
+## Link required to autoregister virtual machines
+variable "dns_name_zone_link" {
+  type        = string
+  description = "Name of the DNS Zone Virtual Link"
+  default     = "DNS_Zone_Link"
+}
