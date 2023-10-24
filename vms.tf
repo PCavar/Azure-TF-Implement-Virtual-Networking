@@ -1,3 +1,4 @@
+## Creation of public ip addresses
 resource "azurerm_public_ip" "vm_pips" {
   for_each            = var.azure_virtual_machines
   name                = each.value.public_ip_name
@@ -6,6 +7,8 @@ resource "azurerm_public_ip" "vm_pips" {
   allocation_method   = "Dynamic"
 }
 
+## Creation of network interfaces && attaching them to subnets
+## Also attaching Network interface/s to Private/Public IP Addresses
 resource "azurerm_network_interface" "vm_nics" {
   for_each            = var.azure_virtual_machines
   name                = each.value.nic_name
@@ -20,6 +23,7 @@ resource "azurerm_network_interface" "vm_nics" {
   }
 }
 
+## Creation om VMs
 resource "azurerm_windows_virtual_machine" "vms" {
   for_each            = var.azure_virtual_machines
   name                = each.value.name
@@ -47,6 +51,8 @@ resource "azurerm_windows_virtual_machine" "vms" {
   }
 }
 
+## Creation of Network Security Group && assigning a rule
+## Assigning a rule is optional and opening ports should be done with CAUTION.
 resource "azurerm_network_security_group" "nsg" {
   name                = var.azure_network_security_group
   location            = azurerm_resource_group.rg_one.location
@@ -65,6 +71,7 @@ resource "azurerm_network_security_group" "nsg" {
   }
 }
 
+## Managing the association between NICs and the NSG
 resource "azurerm_network_interface_security_group_association" "nsg_attachment_nic" {
   for_each                  = azurerm_network_interface.vm_nics
   network_interface_id      = each.value.id

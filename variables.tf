@@ -1,15 +1,18 @@
+## Choose a region where to provision resources. Or change to what suits you in "default"
 variable "azure_region" {
   type        = list(string)
   description = "Accepted values for regions"
   default     = ["Sweden Central", "North Europe", "West Europe", "West US", "East US", "Central US"]
 }
 
+## Name of the resource group provisioned for this project
 variable "azure_resource_group_name" {
   type        = string
   description = "Name of the resource group to be provisioned"
   default     = "az104-04-rg1"
 }
 
+## Name and CIRD block of the provisioned VNET
 variable "azure_virtual_network" {
   type = map(object({
     name = string
@@ -23,6 +26,7 @@ variable "azure_virtual_network" {
   }
 }
 
+## Name and value of the two provisioned subnets
 variable "azure_subnets" {
   type = map(object({
     name = string
@@ -40,8 +44,9 @@ variable "azure_subnets" {
   }
 }
 
-##CREDENTIALS STORED LIKE THIS IS NOT CONSIDERED
-##SAFE OR BEST PRACTICE.
+## CREDENTIALS STORED LIKE THIS IS NOT CONSIDERED
+## SAFE OR BEST PRACTICE.
+## Required parameters to deploy a virtual machine
 variable "azure_virtual_machines" {
   type = map(object({
     name                     = string
@@ -77,6 +82,7 @@ variable "azure_virtual_machines" {
   }
 }
 
+## Name of the Network Security Group
 variable "azure_network_security_group" {
   type        = string
   description = "Name of the NSG provisioned"
