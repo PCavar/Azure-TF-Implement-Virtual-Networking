@@ -8,7 +8,7 @@ resource "azurerm_public_ip" "vm_pips" {
 }
 
 ## Creation of network interfaces && attaching them to subnets
-## Also attaching Network interface/s to Private/Public IP Addresses
+## Also attaching Private/Public IP Addresses to Network interface/s
 resource "azurerm_network_interface" "vm_nics" {
   for_each            = var.azure_virtual_machines
   name                = each.value.nic_name
