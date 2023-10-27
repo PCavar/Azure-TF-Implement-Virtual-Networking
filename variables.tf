@@ -44,7 +44,7 @@ variable "azure_subnets" {
   }
 }
 
-## CREDENTIALS STORED LIKE THIS IS NOT CONSIDERED
+## CREDENTIALS/SENSITIVE INFORMATION STORED HERE IS NOT CONSIDERED
 ## SAFE OR BEST PRACTICE.
 ## Required parameters to deploy a virtual machine
 variable "azure_virtual_machines" {
@@ -64,8 +64,9 @@ variable "azure_virtual_machines" {
       nic_name                 = "az104-04-nic0"
       public_ip_name           = "az104-04-pip0"
       subnet_id                = "subnet0"
-      admin_name               = "studentazure"
-      admin_pass               = "Sommar202020!"
+      // You will be promted to enter credentials when running terraform apply
+      admin_name               = null
+      admin_pass               = null
       size_sku                 = "Standard_D1_v2"
       storage_account_type_ref = "Standard_LRS"
     },
@@ -74,8 +75,9 @@ variable "azure_virtual_machines" {
       nic_name                 = "az104-04-nic1"
       public_ip_name           = "az104-04-pip1"
       subnet_id                = "subnet1"
-      admin_name               = "studentazure"
-      admin_pass               = "Sommar202020!"
+      // You will be promted to enter credentials when running terraform apply
+      admin_name               = null
+      admin_pass               = null
       size_sku                 = "Standard_D1_v2"
       storage_account_type_ref = "Standard_LRS"
     }
