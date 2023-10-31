@@ -4,7 +4,7 @@ The Architecture is shown in the picture, the picture is taken from: https://mic
 Knowledge wise you must be familiar with simple Terraform commands
 
 Steps to proivision:
-    1. Fork the repository
+    1. Preferably download the repository
    
     2. Make sure you are signed in to your Azure account and have set the right subscription to provision resources to.
 
